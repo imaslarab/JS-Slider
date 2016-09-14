@@ -1,0 +1,19 @@
+.content-wrapper{
+    width: 1000px;
+    margin:0 auto;
+    overflow: hidden;
+}
+
+#image-wrapper{    
+    width:4000px;
+    float:left;
+}
+
+#image-wrapper ul li{
+    display: inline;
+}
+
+#image-wrapper img{
+    width:1000px;
+    height:500px;
+}
