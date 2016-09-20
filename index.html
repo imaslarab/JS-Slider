@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset = "UTF-8">
     <title>Slider</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel = "stylesheet" type = "text/css" href = "style.css" />
 </head>
 <body>
    <div class="content-wrapper">
+     
       <div class="button-wrapper">
-          <button id="start">START</button>
-          <button id="stop">STOP</button>
+          <button id = "start">START</button>
+          <button id = "stop">STOP</button>
       </div>
-       <div id="image-wrapper">
-          <ul>
-             <li><img src="./images/image.jpg" alt="image"></li>
-            <li><img src="./images/image2.jpg" alt="image2"></li>
-            <li><img src="./images/image3.jpg" alt="image3"></li>
-          </ul> 
-            
-       </div>
+       
+      <div class="slider-wrapper slider-large">
+           <div class = "image-wrapper" id="slider1">
+              <ul>
+                 <li><img src = "./images/image.jpg" alt = "image"></li>
+                <li><img src = "./images/image2.jpg" alt="image2"></li>
+                <li><img src = "./images/image3.jpg" alt="image3"></li>
+              </ul>             
+           </div>
+       </div>            
+       
    </div>
    <script type="text/javascript" src="slider.js"></script>
+   <script>
+       var slider1 = new Slider(document.getElementById("slider1"));
+      
+   </script>
 </body>
 </html>
 

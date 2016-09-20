@@ -1,66 +1,55 @@
-var slider=document.getElementById("image-wrapper");
-var style = window.getComputedStyle(slider);
+function Slider(container) {
+    var incrementor = 0;
+    var check = 0;
+    var interval;
+    
+    var imageWidth = parseInt(window.getComputedStyle(container.parentNode, null).getPropertyValue('width'));
+    console.log(imageWidth);
+    
+    var nosOfImages = container.getElementsByTagName("img").length;
+    console.log(nosOfImages);
 
-//console.log("Current marginLeft: " + style.marginLeft);
+    var divWidth = imageWidth * nosOfImages;
+    
+    
+    function slide() {
+        incrementor -= 10;
+        check = incrementor * -1;
+        container.style["margin-left"] = incrementor + 'px'; 
+        if (check % imageWidth == 0) {
+            stopInterval();
 
-var j=0;
-var check=0;
+            setTimeout(function() {
+                startInterval();
+            },500);
+        }
 
-var imageWidth=1000;
-var divWidth=3000;
-var interval;
+        if(check % (divWidth-imageWidth) == 0) {
+            incrementor = 0;
+        }
 
-function slide(){
-    j-=10;
-    check=j*-1;
-    slider.style["margin-left"]=j+'px'; 
-    if(check%imageWidth==0){
-        stopInterval();
-        
-        setTimeout(function(){
-            startInterval();
-        },1000);
+    }
+
+    function startInterval() {
+        interval = setInterval( slide , 20 );
+    }
+
+    function stopInterval() {
+        clearInterval( interval );
     }
     
-    if(check%divWidth==0){
-        j=0;
-    }
-  
-}
 
-function startInterval() {
-    interval=setInterval(slide,100);
-}
+    var start = document.getElementById( "start" );
+    var stop = document.getElementById( "stop" );
 
-function stopInterval(){
-    clearInterval(interval);
-}
+    start.addEventListener( "click", function() {
+        clearInterval( interval);
+        startInterval( interval);
 
-var start= document.getElementById("start");
-var stop= document.getElementById("stop");
+    });
 
-start.addEventListener("click", function(){
-    startInterval(interval);
+    stop.addEventListener("click", function(){
+        clearInterval(interval);    
+    });
     
-});
-
-stop.addEventListener("click", function(){
-    clearInterval(interval);
-    
-});
-//var temp = function(){
-//    
-//    
-//        left=style.marginLeft;
-//        check = -1* left;
-////        console.log("left",left);
-//        if(check==2000){
-//            slider.style["margin-left"]=0+'px';
-//        }
-//        slider.style["margin-left"]=j+'px'; 
-//        j=j-10;
-//}
-//
-//
-//
-//var id= window.setInterval(temp, 20);
+}
